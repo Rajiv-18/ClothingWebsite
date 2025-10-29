@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RehCreation</title>
+    <link rel="stylesheet" href="Website.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul class="nav-left">
+                <li><a onclick="showPage('home')">Home</a></li>
+                <li class="dropdown">
+                    <a onclick="showPage('catalog')">Catalog</a>
+                    <div class="dropdown-content">
+                        <a onclick="filterByCategory('hoodies')">Hoodies</a>
+                        <a onclick="filterByCategory('crewnecks')">Crew Necks</a>
+                        <a onclick="filterByCategory('all')">View All</a>
+                    </div>
+                </li>
+                <li><a onclick="showPage('contact')">Contact</a></li>
+            </ul>
+            <div class="logo" onclick="showPage('home')">
+                <img src="rehcreationlogo.png" alt="RehCreation Logo">
+            </div>
+            <ul class="nav-right">
+                <li class="search-container">
+                    <button class="search-toggle" onclick="toggleSearch()">🔍</button>
+                    <div class="search-bar-container" id="searchBarContainer">
+                        <input type="text" class="search-bar" placeholder="Search products..." id="searchInput">
+                    </div>
+                    <div class="search-results" id="searchResults"></div>
+                </li>
+                <li><a onclick="showPage('account')" id="accountLink">Account</a></li>
+                <li><a onclick="showPage('cart')" id="cartLink">Cart (<span id="cartCount">0</span>)</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="home-page page" id="home">
+        <div class="background-slideshow">
+            <div class="background-slide active"></div>
+            <div class="background-slide"></div>
+            <div class="background-slide"></div>
+        </div>
+        
+        <div class="centered-content">
+            <h1 class="brand-name">REHCREATION</h1>
+            <div class="brand-tagline">WHERE MINIMALISM MEETS STREETWEAR</div>
+        </div>
+        
+        <div class="changing-text">
+            <div class="text-slider">WHERE MINIMALISM MEETS STREETWEAR<br>CRAFTED FOR THE MODERN CREATIVE SOUL</div>
+            <div class="text-slider">INNOVATION IN EVERY THREAD<br>EXPRESSING INDIVIDUALITY THROUGH DESIGN</div>
+            <div class="text-slider">SUSTAINABLE FASHION FOR THE CONSCIOUS<br>REIMAGINING CONTEMPORARY STYLE</div>
+        </div>
+        
+        <button class="shop-now-btn" onclick="showPage('catalog')">SHOP NOW</button>
+        
+        <div class="now-text">NOW AVAILABLE</div>
+    </section>
+
+    <section class="catalog-page page" id="catalog">
+        <h2 class="catalog-title">Catalog</h2>
+        
+        <div class="filter-section">
+            <div class="filter-container">
+                <button class="filter-btn active" onclick="filterByCategory('all')">All</button>
+                <button class="filter-btn" onclick="filterByCategory('hoodies')">Hoodies</button>
+                <button class="filter-btn" onclick="filterByCategory('crewnecks')">Crew Necks</button>
+            </div>
+        </div>
+        
+        <div class="products-grid" id="productsGrid">
+        </div>
+    </section>
+
+    <section class="product-detail-page page" id="productDetail">
+        <div class="product-detail-container">
+            <button class="back-btn" onclick="showPage('catalog')">&larr; Back to Catalog</button>
+            <div class="product-detail-content">
+                <div class="product-detail-image" id="productDetailImage" onclick="nextDetailImage()">
+                    <div class="image-indicators" id="imageIndicators"></div>
+                </div>
+                <div class="product-detail-info">
+                    <h2 id="productDetailName"></h2>
+                    <p class="product-detail-price" id="productDetailPrice"></p>
+                    <p class="product-detail-description" id="productDetailDescription"></p>
+                    
+                    <div class="size-selector">
+                        <label>Size:</label>
+                        <select id="sizeSelect">
+                            <option value="XS">XS</option>
+                            <option value="S">S</option>
+                            <option value="M" selected>M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="XXL">XXL</option>
+                        </select>
+                    </div>
+                    
+                    <div class="quantity-selector">
+                        <label>Quantity:</label>
+                        <div class="quantity-controls">
+                            <button onclick="decreaseQuantity()">-</button>
+                            <input type="number" id="quantityInput" value="1" min="1" max="10">
+                            <button onclick="increaseQuantity()">+</button>
+                        </div>
+                    </div>
+                    
+                    <button class="add-to-cart-btn" onclick="addToCart()">Add to Cart</button>
+                    
+                    <div class="product-reviews" id="productReviews">
+                        <h3>Customer Reviews</h3>
+                        <div class="reviews-container" id="reviewsContainer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="account-page page" id="account">
+        <div class="account-container">
+            <div class="auth-forms" id="authForms">
+                <div class="auth-toggle">
+                    <button class="auth-tab active" onclick="showAuthTab('login')">Login</button>
+                    <button class="auth-tab" onclick="showAuthTab('signup')">Sign Up</button>
+                </div>
+                
+                <form class="auth-form active" id="loginForm">
+                    <h2>Welcome Back</h2>
+                    <div class="form-group">
+                        <input type="email" id="loginEmail" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="loginPassword" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="auth-btn">Login</button>
+                </form>
+                
+                <form class="auth-form" id="signupForm">
+                    <h2>Create Account</h2>
+                    <div class="form-group">
+                        <input type="text" id="signupName" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="signupEmail" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="signupPassword" placeholder="Password" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" required>
+                    </div>
+                    <button type="submit" class="auth-btn">Sign Up</button>
+                </form>
+            </div>
+            
+            <div class="user-dashboard" id="userDashboard" style="display: none;">
+                <h2>Welcome, <span id="userName"></span>!</h2>
+                <div class="dashboard-content">
+                    <div class="dashboard-section">
+                        <h3>Account Information</h3>
+                        <p>Email: <span id="userEmail"></span></p>
+                        <button onclick="logout()" class="logout-btn">Logout</button>
+                    </div>
+                    <div class="dashboard-section">
+                        <h3>Order History</h3>
+                        <p>No orders yet. Start shopping!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cart-page page" id="cart">
+        <div class="cart-container">
+            <h2 class="cart-title">Shopping Cart</h2>
+            <div class="cart-content">
+                <div class="cart-items" id="cartItems">
+                    <p class="empty-cart" id="emptyCart">Your cart is empty</p>
+                </div>
+                <div class="cart-summary" id="cartSummary" style="display: none;">
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span id="cartSubtotal">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping:</span>
+                        <span>$10.00</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total:</span>
+                        <span id="cartTotal">$0.00</span>
+                    </div>
+                    <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-page page" id="contact">
+        <h2 class="contact-title">Contact</h2>
+        <div class="contact-content">
+            <p>We are dedicated to creating innovative designs that merge minimalism with modern streetwear aesthetics. Our mission is to provide quality pieces that speak to the contemporary individual.</p>
+            
+            <div class="contact-info">
+                <p><strong>Email:</strong> info@rehcreation.com</p>
+                <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+                <p><strong>Address:</strong> 123 Innovation Street, Creative District, NY 10001</p>
+                <p><strong>Business Hours:</strong> Mon-Fri 9AM-6PM EST</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="toast" id="toast"></div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About RehCreation</h3>
+                <p>We are dedicated to creating innovative designs that merge minimalism with modern streetwear aesthetics. Our mission is to provide quality pieces that speak to the contemporary individual.</p>
+                <p>Email: info@rehcreation.com</p>
+                <p>Phone: +1 (555) 123-4567</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a onclick="showPage('home')">Home</a>
+                <a onclick="showPage('catalog')">Catalog</a>
+                <a onclick="showPage('contact')">Contact</a>
+                <a onclick="showPage('cart')">Shopping Cart</a>
+            </div>
+            <div class="footer-section">
+                <h3>Stay Connected</h3>
+                <p>Subscribe to our newsletter for exclusive updates and new releases.</p>
+                <div class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email">
+                    <button class="newsletter-btn" onclick="subscribeNewsletter()">Subscribe</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 RehCreation. All rights reserved. Designed with passion for modern streetwear.</p>
+            <div class="footer-auth-links">
+                <a onclick="showPage('account')">Login</a>
+                <a onclick="showAuthTab('signup'); showPage('account')">Sign Up</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
