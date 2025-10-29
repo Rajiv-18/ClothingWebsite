@@ -277,21 +277,21 @@ body {
 
 /* Updated background slides with actual images */
 .background-slide:nth-child(1) {
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('reh1.jpg');
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../assets/images/slideshow/reh1.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .background-slide:nth-child(2) {
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('reh2.jpg');
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../assets/images/slideshow/reh2.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .background-slide:nth-child(3) {
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('reh3.jpg');
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../assets/images/slideshow/reh3.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

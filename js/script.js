@@ -13,7 +13,7 @@ const products = [
         name: "Flower Pedal Crew Neck",
         price: 60,
         description: "Soft crew neck sweatshirt featuring delicate floral petal designs. Made from premium cotton blend for comfort and style.",
-        images: ["crewneck.jpg", "crewneckback.jpg"],
+        images: ["assets/images/products/crewneck.jpg", "assets/images/products/crewneckback.jpg"],
         sizes: ["XS", "S", "M", "L", "XL", "XXL"],
         category: "crewnecks",
         reviews: []
@@ -23,7 +23,7 @@ const products = [
         name: "Japan Views Hoodie",
         price: 85,
         description: "Oversized hoodie inspired by traditional Japanese landscapes. Features scenic mountain and temple artwork with premium comfort.",
-        images: ["japanfront.jpg", "japanback.jpg"],
+        images: ["assets/images/products/japanfront.jpg", "assets/images/products/japanback.jpg"],
         sizes: ["XS", "S", "M", "L", "XL", "XXL"],
         category: "hoodies",
         reviews: []
@@ -33,7 +33,7 @@ const products = [
         name: "Sun and Moon Hoodie",
         price: 90,
         description: "Celestial-themed hoodie with sun and moon imagery. Perfect blend of comfort and artistic design in premium materials.",
-        images: ["sunfront.jpg", "sunback.jpg"],
+        images: ["assets/images/products/sunfront.jpg", "assets/images/products/sunback.jpg"],
         sizes: ["XS", "S", "M", "L", "XL", "XXL"],
         category: "hoodies",
         reviews: []
@@ -43,7 +43,7 @@ const products = [
         name: "Van Gogh Starry Hoodie",
         price: 95,
         description: "Art-inspired hoodie featuring Van Gogh's iconic starry night aesthetic. High-quality print on comfortable heavyweight cotton.",
-        images: ["vangohfront.jpg", "vangohback.jpg"],
+        images: ["assets/images/products/vangohfront.jpg", "assets/images/products/vangohback.jpg"],
         sizes: ["XS", "S", "M", "L", "XL", "XXL"],
         category: "hoodies",
         reviews: []
