@@ -156,9 +156,19 @@ function showPage(pageId) {
 
         if (pageId === 'catalog') loadProducts();
         else if (pageId === 'account') updateAccountPage();
+        else if (pageId === 'home') restartTextSlider();
 
         window.scrollTo(0, 0);
     }
+}
+
+function restartTextSlider() {
+    const textSliders = document.querySelectorAll('.text-slider');
+    textSliders.forEach(slider => {
+        slider.style.animation = 'none';
+        slider.offsetHeight; // Trigger reflow
+        slider.style.animation = null;
+    });
 }
 
 function loadProducts() {
