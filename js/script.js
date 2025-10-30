@@ -752,13 +752,17 @@ function setupEventListeners() {
             } catch (error) {
                 console.error('Login error:', error);
                 if (error.code === 'auth/user-not-found') {
-                    showToast('Account not found. Please sign up first.');
+                    showToast('These credentials don\'t exist. Please sign up first.');
                 } else if (error.code === 'auth/wrong-password') {
-                    showToast('Incorrect password. Please try again.');
+                    showToast('Wrong password. Please try again.');
                 } else if (error.code === 'auth/invalid-email') {
-                    showToast('Invalid email address.');
+                    showToast('Invalid email format.');
+                } else if (error.code === 'auth/invalid-credential') {
+                    showToast('These credentials don\'t exist. Please check your email and password.');
+                } else if (error.code === 'auth/too-many-requests') {
+                    showToast('Too many failed attempts. Please try again later.');
                 } else {
-                    showToast('Login failed. Please try again.');
+                    showToast('Login failed. Please check your credentials.');
                 }
             }
         });
@@ -795,14 +799,17 @@ function setupEventListeners() {
 
                 showToast('Account created successfully!');
                 signupForm.reset();
+                showAuthTab('login');
             } catch (error) {
                 console.error('Signup error:', error);
                 if (error.code === 'auth/email-already-in-use') {
-                    showToast('Email already registered. Please login instead.');
+                    showToast('This email is already registered. Please login instead.');
                 } else if (error.code === 'auth/invalid-email') {
-                    showToast('Invalid email address.');
+                    showToast('Invalid email format.');
                 } else if (error.code === 'auth/weak-password') {
-                    showToast('Password is too weak. Use at least 6 characters.');
+                    showToast('Password must be at least 6 characters.');
+                } else if (error.code === 'auth/operation-not-allowed') {
+                    showToast('Email/password accounts are not enabled. Please contact support.');
                 } else {
                     showToast('Signup failed. Please try again.');
                 }
