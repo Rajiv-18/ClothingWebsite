@@ -1188,8 +1188,8 @@ body {
 }
 
 .contact-section {
-    margin-top: 80px;
-    padding-top: 60px;
+    margin-top: 40px;
+    padding-top: 30px;
     border-top: 1px solid #333;
 }
 
@@ -1221,7 +1221,7 @@ body {
 }
 
 .social-media {
-    margin-top: 60px;
+    margin-top: 0;
     text-align: center;
 }
 
