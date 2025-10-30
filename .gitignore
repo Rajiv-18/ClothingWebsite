@@ -1,0 +1,21 @@
+# IDE and Editor Settings
+.claude/
+.vscode/
+.idea/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Node modules (if you ever use them)
+node_modules/
+
+# Environment variables (if you ever use them)
+.env
+.env.local
+
+# Log files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

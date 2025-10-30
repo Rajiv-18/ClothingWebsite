@@ -117,14 +117,16 @@ const firebaseConfig = {
 
 ---
 
-## Part 2: Give Me The Config Object
+## Part 2: Update Your Code with Firebase Config
 
-### How to Share the Config:
+### Add Your Config to the Project:
 
-**Option 1: Copy-Paste (Easiest)**
-Simply paste the entire `firebaseConfig` object in your next message to me. It should look like:
+1. Open `js/firebase-config.js` in your code editor
+2. Replace the existing `firebaseConfig` object with your copied config
 
-```
+Your config should look like:
+
+```javascript
 const firebaseConfig = {
   apiKey: "AIzaSyB...",
   authDomain: "rehcreation-12345.firebaseapp.com",
@@ -139,18 +141,18 @@ const firebaseConfig = {
 
 ---
 
-## Part 3: I'll Update Your Code
+## Part 3: What's Already Set Up
 
-Once you give me the config, I will:
+Your code is already configured with:
 
-1. ✅ Create a new file `js/firebase-config.js` with your config
-2. ✅ Add Firebase SDK scripts to `index.html`
-3. ✅ Update `js/script.js` to use Firebase instead of localStorage:
-   - Replace user authentication with Firebase Auth
-   - Replace localStorage reviews with Firestore
-   - Add newsletter email collection to Firestore
-4. ✅ Add loading states and error handling
-5. ✅ Test that everything works
+1. ✅ Firebase SDK scripts in `index.html`
+2. ✅ Firebase configuration in `js/firebase-config.js`
+3. ✅ `js/script.js` uses Firebase for:
+   - User authentication with Firebase Auth
+   - Reviews stored in Firestore
+   - Newsletter email collection in Firestore
+4. ✅ Loading states and error handling
+5. ✅ Ready to test
 
 ---
 
@@ -273,10 +275,9 @@ If you run into any issues during setup, let me know which step you're on and wh
 - [ ] Created Firestore database
 - [ ] Set Firestore security rules
 - [ ] Registered web app and copied config
-- [ ] Gave config to Claude
-- [ ] Claude updated the code
+- [ ] Updated code with Firebase config
 - [ ] Tested locally (open index.html in browser)
 - [ ] Deployed to Netlify
 - [ ] Tested live site
 
-**Ready to start? Follow Part 1 and then give me your Firebase config!**
+**Ready to start? Follow Part 1 and set up your Firebase project!**
