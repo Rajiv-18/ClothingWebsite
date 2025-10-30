@@ -898,6 +898,7 @@ async function subscribeNewsletter() {
         console.error('Newsletter subscription error:', error);
         showToast('Subscription failed. Please try again.');
     }
+    
 }
 
 let imageCycleIntervals = {};
