@@ -19,7 +19,7 @@
                         <a onclick="filterByCategory('all')">View All</a>
                     </div>
                 </li>
-                <li><a onclick="showPage('contact')">Contact</a></li>
+                <li><a onclick="showPage('about')">About</a></li>
             </ul>
             <div class="logo" onclick="showPage('home')">
                 <img src="assets/images/logo/rehcreationlogo.png" alt="RehCreation Logo">
@@ -33,7 +33,6 @@
                     <div class="search-results" id="searchResults"></div>
                 </li>
                 <li><a onclick="showPage('account')" id="accountLink">Account</a></li>
-                <li><a onclick="showPage('cart')" id="cartLink">Cart (<span id="cartCount">0</span>)</a></li>
             </ul>
         </div>
     </nav>
@@ -80,7 +79,13 @@
         <div class="product-detail-container">
             <button class="back-btn" onclick="showPage('catalog')">&larr; Back to Catalog</button>
             <div class="product-detail-content">
-                <div class="product-detail-image" id="productDetailImage" onclick="nextDetailImage()">
+                <div class="product-detail-image" id="productDetailImage">
+                    <button class="image-nav-btn image-nav-left" onclick="previousDetailImage(event)">‹</button>
+                    <button class="image-nav-btn image-nav-right" onclick="nextDetailImage(event)">›</button>
+                    <button class="slideshow-toggle-btn" id="slideshowToggleBtn" onclick="toggleSlideshow(event)" title="Toggle Slideshow">
+                        <span class="pause-icon">⏸</span>
+                        <span class="play-icon" style="display: none;">▶</span>
+                    </button>
                     <div class="image-indicators" id="imageIndicators"></div>
                 </div>
                 <div class="product-detail-info">
@@ -109,11 +114,39 @@
                         </div>
                     </div>
                     
-                    <button class="add-to-cart-btn" onclick="addToCart()">Add to Cart</button>
+                    <button class="add-to-cart-btn" onclick="showPage('about')">Contact to Order</button>
                     
                     <div class="product-reviews" id="productReviews">
                         <h3>Customer Reviews</h3>
                         <div class="reviews-container" id="reviewsContainer">
+                        </div>
+
+                        <div class="add-review-section" id="addReviewSection">
+                            <h4>Write a Review</h4>
+                            <form class="review-form" id="reviewForm" onsubmit="submitReview(event)">
+                                <div class="rating-input">
+                                    <label>Rating:</label>
+                                    <div class="star-rating">
+                                        <input type="radio" name="rating" value="5" id="star5" required>
+                                        <label for="star5">★</label>
+                                        <input type="radio" name="rating" value="4" id="star4">
+                                        <label for="star4">★</label>
+                                        <input type="radio" name="rating" value="3" id="star3">
+                                        <label for="star3">★</label>
+                                        <input type="radio" name="rating" value="2" id="star2">
+                                        <label for="star2">★</label>
+                                        <input type="radio" name="rating" value="1" id="star1">
+                                        <label for="star1">★</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <textarea id="reviewComment" placeholder="Share your thoughts about this product..." rows="4" required></textarea>
+                                </div>
+                                <button type="submit" class="submit-review-btn">Submit Review</button>
+                            </form>
+                            <p class="login-prompt" id="loginPrompt" style="display: none;">
+                                Please <a onclick="showPage('account')">login</a> to write a review.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -175,42 +208,72 @@
         </div>
     </section>
 
-    <section class="cart-page page" id="cart">
-        <div class="cart-container">
-            <h2 class="cart-title">Shopping Cart</h2>
-            <div class="cart-content">
-                <div class="cart-items" id="cartItems">
-                    <p class="empty-cart" id="emptyCart">Your cart is empty</p>
+    <section class="about-page page" id="about">
+        <h2 class="about-title">Contact/About Us</h2>
+        <div class="about-content">
+            <div class="about-description">
+                <p>We are dedicated to creating innovative designs that merge minimalism with modern streetwear aesthetics. Our mission is to provide quality pieces that speak to the contemporary individual.</p>
+                <p>All of our items are handmade with care and attention to detail, ensuring both style and comfort for our customers. Each piece is crafted locally, making every garment unique and special.</p>
+                <p>We offer custom orders tailored to your preferences! Whether you want a specific design, color scheme, or personalized touch, we can work with you to create a one-of-a-kind piece that reflects your individual style. Reach out to us to discuss your custom order ideas.</p>
+            </div>
+
+            <div class="faq-section">
+                <h3 class="faq-title">Frequently Asked Questions</h3>
+
+                <div class="faq-item">
+                    <div class="faq-question">How to Purchase or Inquire About Any Item?</div>
+                    <div class="faq-answer">
+                        <p>Please reach out to @reh.creation on Instagram or any of the other socials provided below. We're happy to answer any questions and help you with your order!</p>
+                    </div>
                 </div>
-                <div class="cart-summary" id="cartSummary" style="display: none;">
-                    <div class="summary-row">
-                        <span>Subtotal:</span>
-                        <span id="cartSubtotal">$0.00</span>
+
+                <div class="faq-item">
+                    <div class="faq-question">What is the return policy?</div>
+                    <div class="faq-answer">
+                        <p>All items are final sale, we do not offer returns. In the event of receiving a faulty product or incorrect size, please contact customer service using the information below.</p>
                     </div>
-                    <div class="summary-row">
-                        <span>Shipping:</span>
-                        <span>$10.00</span>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">How much does shipping cost?</div>
+                    <div class="faq-answer">
+                        <p>Shipping is dependent on your location and the items in your order. You will always know the shipping price before you purchase.</p>
                     </div>
-                    <div class="summary-row total">
-                        <span>Total:</span>
-                        <span id="cartTotal">$0.00</span>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">When will I get my order?</div>
+                    <div class="faq-answer">
+                        <p>We will work quickly to ship your order as soon as possible. Orders will be shipped between 10 - 14 business days.</p>
                     </div>
-                    <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Defects</div>
+                    <div class="faq-answer">
+                        <p>Because each hoodie is handmade using woven tapestry fabric there might be slight imperfections. These can include minor weaving inconsistencies, small thread pulls, minimal size variations, or light asymmetry in the design. In some cases, there may also be very small rips or loose areas in the weave. These characteristics are a natural result of artisanal craftsmanship and fabric texture, making each piece one of a kind.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <section class="contact-page page" id="contact">
-        <h2 class="contact-title">Contact</h2>
-        <div class="contact-content">
-            <p>We are dedicated to creating innovative designs that merge minimalism with modern streetwear aesthetics. Our mission is to provide quality pieces that speak to the contemporary individual.</p>
-            
-            <div class="contact-info">
-                <p><strong>Email:</strong> info@rehcreation.com</p>
-                <p><strong>Phone:</strong> +1 (555) 123-4567</p>
-                <p><strong>Address:</strong> 123 Innovation Street, Creative District, NY 10001</p>
-                <p><strong>Business Hours:</strong> Mon-Fri 9AM-6PM EST</p>
+            <div class="contact-section">
+                <h3 class="contact-section-title">Get In Touch</h3>
+                <div class="contact-info">
+                    <p><strong>Email:</strong> info@rehcreation.com</p>
+                    <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+                    <p><strong>Address:</strong> 123 Innovation Street, Creative District, NY 10001</p>
+                    <p><strong>Business Hours:</strong> Mon-Fri 9AM-6PM EST</p>
+                </div>
+
+                <div class="social-media">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="https://instagram.com/reh.creation" target="_blank" rel="noopener noreferrer">Instagram: @reh.creation</a>
+                        <a href="https://twitter.com/rehcreation" target="_blank" rel="noopener noreferrer">Twitter: @rehcreation</a>
+                        <a href="https://facebook.com/rehcreation" target="_blank" rel="noopener noreferrer">Facebook: @rehcreation</a>
+                        <a href="https://tiktok.com/@reh.creation" target="_blank" rel="noopener noreferrer">TikTok: @reh.creation</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -229,8 +292,7 @@
                 <h3>Quick Links</h3>
                 <a onclick="showPage('home')">Home</a>
                 <a onclick="showPage('catalog')">Catalog</a>
-                <a onclick="showPage('contact')">Contact</a>
-                <a onclick="showPage('cart')">Shopping Cart</a>
+                <a onclick="showPage('about')">About</a>
             </div>
             <div class="footer-section">
                 <h3>Stay Connected</h3>
@@ -250,6 +312,10 @@
         </div>
     </footer>
 
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="js/firebase-config.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
