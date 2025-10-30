@@ -935,7 +935,7 @@ function initializeSlideshow() {
 function startSlideshow() {
     slideInterval = setInterval(() => {
         nextSlide();
-    }, 4000);
+    }, 3000);
 }
 
 function pauseSlideshow() {
