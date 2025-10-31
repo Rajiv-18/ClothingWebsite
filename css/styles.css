@@ -247,13 +247,13 @@ body {
 }
 
 .home-page {
-    height: 100vh;
+    min-height: 100vh;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .background-slideshow {
@@ -284,21 +284,21 @@ body {
 
 /* Updated background slides with actual images */
 .background-slide:nth-child(1) {
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/assets/images/slideshow/reh1.jpg');
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../assets/images/slideshow/reh1.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .background-slide:nth-child(2) {
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/assets/images/slideshow/reh2.jpg');
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../assets/images/slideshow/reh2.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .background-slide:nth-child(3) {
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/assets/images/slideshow/reh3.jpg');
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../assets/images/slideshow/reh3.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -1283,8 +1283,10 @@ body {
 .footer {
     background: #111;
     padding: 60px 40px 30px;
-    margin-top: 80px;
+    margin-top: 0;
     border-top: 1px solid #333;
+    position: relative;
+    z-index: 1;
 }
 
 .footer-content {
@@ -1417,6 +1419,15 @@ body {
 
 .page {
     transition: opacity 0.5s ease;
+}
+
+.catalog-page,
+.product-detail-page,
+.account-page,
+.about-page {
+    position: relative;
+    z-index: 1;
+    background: #000;
 }
 
 @media (max-width: 968px) {
