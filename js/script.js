@@ -32,7 +32,7 @@ const products = [
         name: "Roses",
         price: 60,
         description: "1:1 Tapestry hoodie featuring beautiful rose designs. Handmade with premium woven tapestry fabric for a unique and artistic look.",
-        images: ["assets/images/tapestry/Roses.jpeg"],
+        images: ["assets/images/tapestry/roses.jpeg"],
         sizes: ["XS", "S", "M", "L", "XL", "XXL"],
         category: "tapestry",
         reviews: []
@@ -42,7 +42,7 @@ const products = [
         name: "Dalmatians",
         price: 60,
         description: "1:1 Tapestry hoodie featuring playful dalmatian patterns. Handmade with premium woven tapestry fabric for a unique and artistic look.",
-        images: ["assets/images/tapestry/Dalmatians .jpeg"],
+        images: ["assets/images/tapestry/dalmatians.jpeg"],
         sizes: ["XS", "S", "M", "L", "XL", "XXL"],
         category: "tapestry",
         reviews: []
@@ -52,7 +52,7 @@ const products = [
         name: "Skull Head",
         price: 60,
         description: "1:1 Tapestry hoodie featuring striking skull head design. Handmade with premium woven tapestry fabric for a unique and artistic look.",
-        images: ["assets/images/tapestry/Skull Head.jpeg"],
+        images: ["assets/images/tapestry/skull-head.jpeg"],
         sizes: ["XS", "S", "M", "L", "XL", "XXL"],
         category: "tapestry",
         reviews: []
@@ -62,7 +62,7 @@ const products = [
         name: "Angel Trumpet",
         price: 60,
         description: "1:1 Tapestry hoodie featuring elegant angel trumpet flowers. Handmade with premium woven tapestry fabric for a unique and artistic look.",
-        images: ["assets/images/tapestry/Angel Trumpet.jpeg"],
+        images: ["assets/images/tapestry/angel-trumpet.jpeg"],
         sizes: ["XS", "S", "M", "L", "XL", "XXL"],
         category: "tapestry",
         reviews: []
@@ -72,7 +72,7 @@ const products = [
         name: "Mickey Mouse",
         price: 60,
         description: "1:1 Tapestry hoodie featuring classic Mickey Mouse design. Handmade with premium woven tapestry fabric for a unique and artistic look.",
-        images: ["assets/images/tapestry/Mickey Mouse.jpeg"],
+        images: ["assets/images/tapestry/mickey-mouse.jpeg"],
         sizes: ["XS", "S", "M", "L", "XL", "XXL"],
         category: "tapestry",
         reviews: []
@@ -82,7 +82,7 @@ const products = [
         name: "Teddy Bear",
         price: 60,
         description: "1:1 Tapestry hoodie featuring adorable teddy bear design. Handmade with premium woven tapestry fabric for a unique and artistic look.",
-        images: ["assets/images/tapestry/Teddy Bear.jpeg"],
+        images: ["assets/images/tapestry/teddy-bear.jpeg"],
         sizes: ["XS", "S", "M", "L", "XL", "XXL"],
         category: "tapestry",
         reviews: []
@@ -92,7 +92,7 @@ const products = [
         name: "Pluto",
         price: 60,
         description: "1:1 Tapestry hoodie featuring lovable Pluto character design. Handmade with premium woven tapestry fabric for a unique and artistic look.",
-        images: ["assets/images/tapestry/Pluto.jpeg"],
+        images: ["assets/images/tapestry/pluto.jpeg"],
         sizes: ["XS", "S", "M", "L", "XL", "XXL"],
         category: "tapestry",
         reviews: []
