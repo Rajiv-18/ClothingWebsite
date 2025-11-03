@@ -1,39 +1,18 @@
 let currentUser = null;
 let currentProduct = null;
-let currentSlide = 0;
-let slideInterval;
 let searchOpen = false;
 let currentDetailImageIndex = 0;
 let detailSlideshowInterval = null;
 let isSlideshowPlaying = true;
+let currentCategory = 'all';
 
 const products = [
-    {
-        id: 1,
-        name: "Flower Pedal Crew Neck",
-        price: 60,
-        description: "Soft crew neck sweatshirt featuring delicate floral petal designs. Made from premium cotton blend for comfort and style.",
-        images: ["assets/images/products/crewneck.jpg", "assets/images/products/crewneckback.jpg"],
-        sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-        category: "crewnecks",
-        reviews: []
-    },
     {
         id: 2,
         name: "Japan Views Hoodie",
         price: 85,
         description: "Oversized hoodie inspired by traditional Japanese landscapes. Features scenic mountain and temple artwork with premium comfort.",
         images: ["assets/images/products/japanfront.jpg", "assets/images/products/japanback.jpg"],
-        sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-        category: "hoodies",
-        reviews: []
-    },
-    {
-        id: 3,
-        name: "Sun and Moon Hoodie",
-        price: 90,
-        description: "Celestial-themed hoodie with sun and moon imagery. Perfect blend of comfort and artistic design in premium materials.",
-        images: ["assets/images/products/sunfront.jpg", "assets/images/products/sunback.jpg"],
         sizes: ["XS", "S", "M", "L", "XL", "XXL"],
         category: "hoodies",
         reviews: []
@@ -46,6 +25,76 @@ const products = [
         images: ["assets/images/products/vangohfront.jpg", "assets/images/products/vangohback.jpg"],
         sizes: ["XS", "S", "M", "L", "XL", "XXL"],
         category: "hoodies",
+        reviews: []
+    },
+    {
+        id: 5,
+        name: "Roses",
+        price: 60,
+        description: "1:1 Tapestry hoodie featuring beautiful rose designs. Handmade with premium woven tapestry fabric for a unique and artistic look.",
+        images: ["assets/images/tapestry/Roses.jpeg"],
+        sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+        category: "tapestry",
+        reviews: []
+    },
+    {
+        id: 6,
+        name: "Dalmatians",
+        price: 60,
+        description: "1:1 Tapestry hoodie featuring playful dalmatian patterns. Handmade with premium woven tapestry fabric for a unique and artistic look.",
+        images: ["assets/images/tapestry/Dalmatians .jpeg"],
+        sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+        category: "tapestry",
+        reviews: []
+    },
+    {
+        id: 7,
+        name: "Skull Head",
+        price: 60,
+        description: "1:1 Tapestry hoodie featuring striking skull head design. Handmade with premium woven tapestry fabric for a unique and artistic look.",
+        images: ["assets/images/tapestry/Skull Head.jpeg"],
+        sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+        category: "tapestry",
+        reviews: []
+    },
+    {
+        id: 8,
+        name: "Angel Trumpet",
+        price: 60,
+        description: "1:1 Tapestry hoodie featuring elegant angel trumpet flowers. Handmade with premium woven tapestry fabric for a unique and artistic look.",
+        images: ["assets/images/tapestry/Angel Trumpet.jpeg"],
+        sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+        category: "tapestry",
+        reviews: []
+    },
+    {
+        id: 9,
+        name: "Mickey Mouse",
+        price: 60,
+        description: "1:1 Tapestry hoodie featuring classic Mickey Mouse design. Handmade with premium woven tapestry fabric for a unique and artistic look.",
+        images: ["assets/images/tapestry/Mickey Mouse.jpeg"],
+        sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+        category: "tapestry",
+        reviews: []
+    },
+    {
+        id: 10,
+        name: "Teddy Bear",
+        price: 60,
+        description: "1:1 Tapestry hoodie featuring adorable teddy bear design. Handmade with premium woven tapestry fabric for a unique and artistic look.",
+        images: ["assets/images/tapestry/Teddy Bear.jpeg"],
+        sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+        category: "tapestry",
+        reviews: []
+    },
+    {
+        id: 11,
+        name: "Pluto",
+        price: 60,
+        description: "1:1 Tapestry hoodie featuring lovable Pluto character design. Handmade with premium woven tapestry fabric for a unique and artistic look.",
+        images: ["assets/images/tapestry/Pluto.jpeg"],
+        sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+        category: "tapestry",
         reviews: []
     }
 ];
@@ -138,7 +187,6 @@ document.addEventListener('DOMContentLoaded', async function() {
     showPage('home');
     loadProducts();
     setupEventListeners();
-    initializeSlideshow();
     setupSearch();
 });
 
@@ -154,8 +202,7 @@ function showPage(pageId) {
     if (targetPage) {
         targetPage.style.display = pageId === 'home' ? 'flex' : 'block';
 
-        if (pageId === 'catalog') loadProducts();
-        else if (pageId === 'account') updateAccountPage();
+        if (pageId === 'account') updateAccountPage();
         else if (pageId === 'home') restartTextSlider();
 
         window.scrollTo(0, 0);
@@ -218,7 +265,7 @@ function loadProducts() {
                     images[currentImageIndex].classList.remove('active');
                     currentImageIndex = (currentImageIndex + 1) % images.length;
                     images[currentImageIndex].classList.add('active');
-                }, 800);
+                }, 2500);
             });
 
             productElement.addEventListener('mouseleave', function() {
@@ -308,6 +355,16 @@ function viewProduct(productId) {
             if (size === 'M' && product.sizes.includes('M')) option.selected = true;
             sizeSelect.appendChild(option);
         });
+    }
+
+    // Show color selector only for tapestry items
+    const colorSelector = document.getElementById('colorSelector');
+    if (colorSelector) {
+        if (product.category === 'tapestry') {
+            colorSelector.style.display = 'block';
+        } else {
+            colorSelector.style.display = 'none';
+        }
     }
 
     const quantityInput = document.getElementById('quantityInput');
@@ -458,7 +515,7 @@ function startDetailSlideshow() {
 
     detailSlideshowInterval = setInterval(() => {
         nextDetailImage();
-    }, 1500);
+    }, 5000);
 
     updateSlideshowButton();
 }
@@ -522,31 +579,41 @@ function decreaseQuantity() {
     }
 }
 
+function returnToCatalog() {
+    // Return to catalog page with the saved category filter
+    filterByCategory(currentCategory);
+}
+
 function filterByCategory(category) {
     console.log('Filtering by category:', category);
+    currentCategory = category; // Save the current category
     const filterButtons = document.querySelectorAll('.filter-btn');
     filterButtons.forEach(btn => btn.classList.remove('active'));
-    
-    const activeButton = Array.from(filterButtons).find(btn => 
-        btn.textContent.toLowerCase().replace(' ', '') === category ||
-        (category === 'all' && btn.textContent === 'All')
+
+    const activeButton = Array.from(filterButtons).find(btn =>
+        btn.textContent.toLowerCase().replace(/\s+/g, '').replace(/:/g, '') === category.toLowerCase().replace(/\s+/g, '').replace(/:/g, '') ||
+        (category === 'all' && btn.textContent === 'All') ||
+        (category === 'tapestry' && btn.textContent === '1:1 Tapestry')
     );
     if (activeButton) {
         activeButton.classList.add('active');
     }
-    
+
     showPage('catalog');
-    
+
     let filteredProducts;
     if (category === 'all') {
         filteredProducts = products;
         showToast(`Showing all ${products.length} products`);
     } else {
         filteredProducts = products.filter(product => product.category === category);
-        const categoryName = category.charAt(0).toUpperCase() + category.slice(1);
+        let categoryName = category.charAt(0).toUpperCase() + category.slice(1);
+        if (category === 'tapestry') {
+            categoryName = '1:1 Tapestry';
+        }
         showToast(`Showing ${filteredProducts.length} ${categoryName}`);
     }
-    
+
     filterProducts(filteredProducts);
 }
 
@@ -594,7 +661,7 @@ function filterProducts(filteredProducts) {
                     images[currentImageIndex].classList.remove('active');
                     currentImageIndex = (currentImageIndex + 1) % images.length;
                     images[currentImageIndex].classList.add('active');
-                }, 800); // Change image every 800ms
+                }, 2500); // Change image every 2500ms
             });
 
             productElement.addEventListener('mouseleave', function() {
@@ -918,7 +985,7 @@ function startImageCycle(productId) {
         images[currentIndex].classList.remove('active');
         currentIndex = (currentIndex + 1) % images.length;
         images[currentIndex].classList.add('active');
-    }, 800);
+    }, 2500);
 }
 
 function stopImageCycle(productId) {
@@ -936,43 +1003,6 @@ function stopImageCycle(productId) {
     }
 }
 
-function initializeSlideshow() {
-    const slides = document.querySelectorAll('.background-slide');
-    slides.forEach((slide, index) => {
-        slide.classList.toggle('active', index === 0);
-    });
-    
-    startSlideshow();
-    
-    const homeSection = document.getElementById('home');
-    if (homeSection) {
-        homeSection.addEventListener('mouseenter', pauseSlideshow);
-        homeSection.addEventListener('mouseleave', startSlideshow);
-    }
-}
-
-function startSlideshow() {
-    slideInterval = setInterval(() => {
-        nextSlide();
-    }, 3000);
-}
-
-function pauseSlideshow() {
-    clearInterval(slideInterval);
-}
-
-function nextSlide() {
-    currentSlide = (currentSlide + 1) % 3;
-    updateSlide();
-}
-
-function updateSlide() {
-    const slides = document.querySelectorAll('.background-slide');
-    
-    slides.forEach((slide, index) => {
-        slide.classList.toggle('active', index === currentSlide);
-    });
-}
 
 window.addEventListener('scroll', function() {
     const navbar = document.querySelector('.navbar');

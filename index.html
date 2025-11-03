@@ -12,15 +12,16 @@
             <ul class="nav-left">
                 <li><a onclick="showPage('home')">Home</a></li>
                 <li class="dropdown">
-                    <a onclick="showPage('catalog')">Catalog</a>
+                    <a onclick="filterByCategory('all')">Catalog</a>
                     <div class="dropdown-content">
                         <a onclick="filterByCategory('hoodies')">Hoodies</a>
-                        <a onclick="filterByCategory('crewnecks')">Crew Necks</a>
+                        <a onclick="filterByCategory('tapestry')">1:1 Tapestry</a>
                         <a onclick="filterByCategory('all')">View All</a>
                     </div>
                 </li>
                 <li><a onclick="showPage('about')">About</a></li>
             </ul>
+            
             <div class="logo" onclick="showPage('home')">
                 <img src="assets/images/logo/rehcreationlogo.png" alt="RehCreation Logo">
             </div>
@@ -38,12 +39,18 @@
     </nav>
 
     <section class="home-page page" id="home">
-        <div class="background-slideshow">
-            <div class="background-slide active"></div>
-            <div class="background-slide"></div>
-            <div class="background-slide"></div>
+        <div class="three-images-container">
+            <div class="home-image-wrapper">
+                <img src="assets/images/slideshow/reh1.png" alt="RehCreation Image 1">
+            </div>
+            <div class="home-image-wrapper">
+                <img src="assets/images/slideshow/reh2.png" alt="RehCreation Image 2">
+            </div>
+            <div class="home-image-wrapper">
+                <img src="assets/images/slideshow/reh3.png" alt="RehCreation Image 3">
+            </div>
         </div>
-        
+
         <div class="centered-content">
             <h1 class="brand-name">REHCREATION</h1>
 
@@ -54,7 +61,7 @@
             </div>
         </div>
 
-        <button class="shop-now-btn" onclick="showPage('catalog')">SHOP NOW</button>
+        <button class="shop-now-btn" onclick="filterByCategory('all')">SHOP NOW</button>
 
         <div class="now-text">NOW AVAILABLE</div>
     </section>
@@ -66,7 +73,7 @@
             <div class="filter-container">
                 <button class="filter-btn active" onclick="filterByCategory('all')">All</button>
                 <button class="filter-btn" onclick="filterByCategory('hoodies')">Hoodies</button>
-                <button class="filter-btn" onclick="filterByCategory('crewnecks')">Crew Necks</button>
+                <button class="filter-btn" onclick="filterByCategory('tapestry')">1:1 Tapestry</button>
             </div>
         </div>
         
@@ -76,7 +83,7 @@
 
     <section class="product-detail-page page" id="productDetail">
         <div class="product-detail-container">
-            <button class="back-btn" onclick="showPage('catalog')">&larr; Back to Catalog</button>
+            <button class="back-btn" onclick="returnToCatalog()">&larr; Back to Catalog</button>
             <div class="product-detail-content">
                 <div class="product-detail-image" id="productDetailImage">
                     <button class="image-nav-btn image-nav-left" onclick="previousDetailImage(event)">‹</button>
@@ -103,7 +110,15 @@
                             <option value="XXL">XXL</option>
                         </select>
                     </div>
-                    
+
+                    <div class="color-selector" id="colorSelector" style="display: none;">
+                        <label>Hoodie Color:</label>
+                        <select id="colorSelect">
+                            <option value="Black" selected>Black</option>
+                            <option value="Grey">Grey</option>
+                        </select>
+                    </div>
+
                     <div class="quantity-selector">
                         <label>Quantity:</label>
                         <div class="quantity-controls">
@@ -280,7 +295,7 @@
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <a onclick="showPage('home')">Home</a>
-                <a onclick="showPage('catalog')">Catalog</a>
+                <a onclick="filterByCategory('all')">Catalog</a>
                 <a onclick="showPage('about')">About</a>
             </div>
             <div class="footer-section">

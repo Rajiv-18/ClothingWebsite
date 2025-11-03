@@ -256,52 +256,36 @@ body {
     overflow: visible;
 }
 
-.background-slideshow {
+.three-images-container {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: -2;
+    display: flex;
+    flex-direction: row;
+    gap: 0;
 }
 
-.background-slide {
-    position: absolute;
-    top: 0;
-    left: 0;
+.home-image-wrapper {
+    flex: 1;
+    width: 33.333%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.home-image-wrapper img {
     width: 100%;
     height: 100%;
-    opacity: 0;
-    transition: opacity 2s ease-in-out;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.7);
 }
 
-.background-slide.active {
-    opacity: 1;
-}
-
-/* Updated background slides with actual images */
-.background-slide:nth-child(1) {
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../assets/images/slideshow/reh1.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.background-slide:nth-child(2) {
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../assets/images/slideshow/reh2.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.background-slide:nth-child(3) {
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../assets/images/slideshow/reh3.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+.home-image-wrapper:nth-child(2) img {
+    object-position: center 42%;
 }
 
 .slideshow-indicators {
@@ -430,14 +414,14 @@ body {
 .text-slider {
     position: absolute;
     opacity: 0;
-    animation: textSlide 9s infinite;
+    animation: textSlide 9s ease-in-out infinite;
     white-space: nowrap;
     line-height: 1.4;
 }
 
-.text-slider:nth-child(1) { animation-delay: 0s; }
-.text-slider:nth-child(2) { animation-delay: 3s; }
-.text-slider:nth-child(3) { animation-delay: 6s; }
+.text-slider:nth-child(1) { animation-delay: 0.5s; }
+.text-slider:nth-child(2) { animation-delay: 3.5s; }
+.text-slider:nth-child(3) { animation-delay: 6.5s; }
 
 .catalog-page {
     display: none;
@@ -547,7 +531,7 @@ body {
     height: 100%;
     object-fit: cover;
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transition: opacity 1.2s ease;
 }
 
 .product-img.active {
@@ -628,7 +612,7 @@ body {
     height: 100%;
     object-fit: cover;
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transition: opacity 1.2s ease;
 }
 
 .product-detail-image .product-img.active {
@@ -748,11 +732,11 @@ body {
     opacity: 0.8;
 }
 
-.size-selector, .quantity-selector {
+.size-selector, .color-selector, .quantity-selector {
     margin-bottom: 30px;
 }
 
-.size-selector label, .quantity-selector label {
+.size-selector label, .color-selector label, .quantity-selector label {
     display: block;
     margin-bottom: 10px;
     text-transform: uppercase;
@@ -760,7 +744,7 @@ body {
     font-size: 14px;
 }
 
-.size-selector select {
+.size-selector select, .color-selector select {
     background: #111;
     color: #fff;
     border: 1px solid #333;
@@ -1398,17 +1382,17 @@ body {
 }
 
 @keyframes textSlide {
-    0%, 30% {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    5%, 28% {
         opacity: 1;
         transform: translateY(0);
     }
-    35%, 95% {
+    33%, 100% {
         opacity: 0;
         transform: translateY(-20px);
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(20px);
     }
 }
 
