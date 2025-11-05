@@ -10,7 +10,7 @@ const products = [
     {
         id: 2,
         name: "Japan Views Hoodie",
-        price: 85,
+        price: 80,
         description: "Oversized hoodie inspired by traditional Japanese landscapes. Features scenic mountain and temple artwork with premium comfort.",
         images: ["assets/images/products/japanfront.jpg", "assets/images/products/japanback.jpg"],
         sizes: ["XS", "S", "M", "L", "XL", "XXL"],
@@ -20,7 +20,7 @@ const products = [
     {
         id: 4,
         name: "Van Gogh Starry Hoodie",
-        price: 95,
+        price: 80,
         description: "Art-inspired hoodie featuring Van Gogh's iconic starry night aesthetic. High-quality print on comfortable heavyweight cotton.",
         images: ["assets/images/products/vangohfront.jpg", "assets/images/products/vangohback.jpg"],
         sizes: ["XS", "S", "M", "L", "XL", "XXL"],
