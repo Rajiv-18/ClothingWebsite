@@ -16,7 +16,7 @@ body {
     top: 0;
     width: 100%;
     z-index: 1000;
-    padding: 20px 0;
+    padding: 10px 0;
     background: rgba(0, 0, 0, 0.9);
     backdrop-filter: blur(10px);
     transition: background 0.3s ease;
@@ -26,15 +26,15 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1400px;
+    max-width: 100%;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 30px;
 }
 
 .nav-left, .nav-right {
     display: flex;
     list-style: none;
-    gap: 30px;
+    gap: 25px;
     align-items: center;
     flex: 1;
 }
@@ -373,7 +373,7 @@ body {
     width: 100%;
     text-align: center;
     opacity: 0.8;
-    margin-top: 20px;
+    margin-top: 5px;
 }
 
 .shop-now-btn {
