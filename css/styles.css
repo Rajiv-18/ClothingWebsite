@@ -1381,6 +1381,81 @@ body {
     }
 }
 
+@media (max-width: 600px) {
+    body {
+        font-size: 15px;
+    }
+    .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 8px;
+    }
+    .logo img {
+        height: 24px;
+    }
+    .nav-right {
+        gap: 10px;
+    }
+    .dropdown-content {
+        min-width: 120px;
+        font-size: 11px;
+    }
+    .brand-name {
+        font-size: 1.3rem;
+        letter-spacing: 0.5px;
+    }
+    .brand-tagline {
+        font-size: 0.8rem;
+        letter-spacing: 0.5px;
+    }
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        max-width: 100%;
+    }
+    .product-image {
+        height: 160px;
+    }
+    .product-detail-image {
+        height: 220px;
+    }
+    .shop-now-btn {
+        bottom: 20px;
+        right: 8px;
+        padding: 7px 12px;
+        font-size: 11px;
+    }
+    .now-text {
+        right: 8px;
+        font-size: 0.7rem;
+    }
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        text-align: center;
+    }
+    .newsletter-input, .newsletter-btn {
+        max-width: 100%;
+        font-size: 12px;
+    }
+    .faq-title, .about-title, .catalog-title, .contact-section-title {
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+    }
+    .faq-item {
+        padding: 10px;
+    }
+    .faq-question {
+        font-size: 13px;
+    }
+    .faq-answer {
+        font-size: 12px;
+    }
+    .contact-section .contact-info p {
+        font-size: 12px;
+    }
+}
+
 @keyframes textSlide {
     0% {
         opacity: 0;
